@@ -19,7 +19,7 @@ function varargout = Ambrace(varargin)
 
 % Edit the above text to modify the response to help Ambrace
 
-% Last Modified by GUIDE v2.5 12-Dec-2016 15:29:38
+% Last Modified by GUIDE v2.5 28-Apr-2017 20:58:48
 % janghyun.yoo@nih.gov
 
 % Begin initialization code - DO NOT EDIT
@@ -92,7 +92,7 @@ if strcmpi(get(handles.codon_text, 'String'),'Codon table')
 end
 
 % Check the options
-skip=2*get(handles.lastAAcheckbox,'value')+get(handles.slastAAcheckbox,'value');
+skip=get(handles.lastAAcheckbox,'value')+2*get(handles.slastAAcheckbox,'value');
 % this is our protein sequence
 AA_input = get(handles.edit1,'String');
 if numel(AA_input)<4-handles.method

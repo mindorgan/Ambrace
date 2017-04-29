@@ -17,34 +17,33 @@ if nargin<3
     skip=0;
 end
 AA2_multiplier={
-'A',	1.445325405;
-'R',	0.506802415;
-'N',	0.871976041;
-'D',	1.998383595;
-'C',	1.268346784;
-'Q',	1.138013691;
-'E',    1.832466138;
-'G',	1.64145712;
-'H',	0.836551399;
-'I',	1.238850347;
-'L',	1.268346784;
-'K',	1.29771285;
-'M',	1.445325405;
-'F',    1.788401339;
-'P',	1.496623556;
-'S',	1.235745459;
-'T',	0.655861948;
-'W',	1.351473106;
-'Y',	1.255705454;
-'V',	1.486620416
+'A',	1.251519702;
+'R',	0.438844571;
+'N',	0.755051556;
+'D',	1.730417548;
+'C',	1.098272392;
+'Q',	0.985415845;
+'E',    1.586748194;
+'G',	1.421351842;
+'H',	0.724377053;
+'I',	1.072731174;
+'L',	1.098272392;
+'K',	1.123700721;
+'M',	1.251519702;
+'F',    1.548592106;
+'P',	1.295939213;
+'S',	1.070042624;
+'T',	0.567916504;
+'W',	1.170252189;
+'Y',	1.087326156;
+'V',	1.287277408
 };
-
 for ii=1:size(AA2_multiplier,1)
     if strcmpi(AA2_multiplier{ii,1},AAsequence(1))
         if fix(skip/2)==1
-            output_activity=1.228429299*AA1_score(AAsequence(2),Nsequence, skip); % skip this AA, use average value
-        else
             output_activity=AA2_multiplier{ii,2}*AA1_score(AAsequence(2),Nsequence, skip);
+        else
+            output_activity=mean(cell2mat(AA2_multiplier(:,2)))*AA1_score(AAsequence(2),Nsequence, skip); % skip this AA, use average value
         end
         return;
     end
