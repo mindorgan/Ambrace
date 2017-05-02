@@ -145,19 +145,17 @@ try
     end
     
     if fix(skip/2)==0
-        lastAAString='No';
-    elseif fix(skip/2)==1
-        lastAAString='Yes';
-    else
-        lastAAString='Unknown';
-    end
-    
-    if rem(skip,2)==0
         slastAAString='No';
     elseif fix(skip/2)==1
         slastAAString='Yes';
     else
         slastAAString='Unknown';
+    end
+    
+    if rem(skip,2)==0
+        lastAAString='No';
+    else
+        lastAAString='Yes';
     end
     fprintf(fileID,'Method: %s\nInclude the last AA: %s\nInclude the second last AA: %s\n\n',methodString,lastAAString,slastAAString);
     fprintf(fileID,'Rank\tScore\tSequence\n');
