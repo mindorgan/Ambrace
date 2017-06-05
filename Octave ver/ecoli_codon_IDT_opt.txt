@@ -1,0 +1,79 @@
+// Optimized codons for E. Coli. from https://www.idtdna.com/CodonOpt
+1. A
+GCA
+GCC
+GCG
+GCT
+2. R
+CGT
+CGC
+CGG
+AGA
+3. N
+AAT
+AAC
+4. D
+GAT
+GAC
+5. C
+TGT
+TGC
+6. E
+GAA
+GAG
+7. Q
+CAG
+CAA
+8. G
+GGT
+GGC
+GGA
+GGG
+9. H
+CAT
+CAC
+10. I
+ATT
+ATC
+ATA
+11. L
+CTG
+TTA
+CTT
+TTG
+CTC
+12. K
+AAA
+AAG
+13. M
+ATG
+14. F
+TTT
+TTC
+15. P
+CCG
+CCT
+CCA
+CCC
+16. S
+AGC
+TCT
+TCA
+AGT
+TCC
+TCG
+17. T
+ACC
+ACA
+ACT
+ACG
+18. W
+TGG
+19. Y
+TAT
+TAC
+20. V
+GTT
+GTG
+GTA
+GTC
