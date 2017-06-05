@@ -94,7 +94,7 @@ end
 % Check the options
 skip=get(handles.lastAAcheckbox,'value')+2*get(handles.slastAAcheckbox,'value');
 % this is our protein sequence
-AA_input = get(handles.edit1,'String');
+AA_input = upper(get(handles.edit1,'String'));
 if numel(AA_input)<4-handles.method
     h=errordlg(['Input at least ' num2str(4-handles.method) ' AAs']);
     return;
@@ -128,7 +128,11 @@ try
     % Now sort the sequences by their scores
     [sortedScores, sortIndex]=sort(scores,'descend');
     
-    cd(fullfile(codePath,'Output'));
+    outDir=fullfile(codePath,'Output');
+    if exist(outDir,'dir')==0 %dir not exist
+        mkdir(outDir);
+    end
+    cd(outDir);
     
     today_str=strcat(datestr(clock,'yyyy-mm-dd-HHMM'),'m',datestr(clock,'ss'),'s');
     result_file=['Ambrace_' today_str '.txt'];
