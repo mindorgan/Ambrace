@@ -103,8 +103,10 @@ end
 % Start scoring
 try
     curPath=pwd;
-    [codePath,name,ext] = fileparts(mfilename('fullpath'));
-    addpath(fullfile(codePath,'Scores')); % add scoring fuctions path
+    %[codePath,name,ext] = fileparts(mfilename('fullpath'));
+    %addpath(fullfile(codePath,'Scores')); % add scoring fuctions path
+    
+    codePath=handles.codonPath;
     
     sequences=cell(0,1);
     scores=zeros(0,1);
@@ -129,10 +131,8 @@ try
     [sortedScores, sortIndex]=sort(scores,'descend');
     
     outDir=fullfile(codePath,'Output');
-    try
+    if exist(outDir,'dir')==0
         mkdir(outDir);
-    catch e
-        ;
     end
     cd(outDir);
     
@@ -242,6 +242,8 @@ if opened==0
 end
 
 set(handles.codon_text, 'String', codon_file);
+handles.codonPath=fooPath;
+cd(fooPath);
 fileID=fopen(codon_file);
 
 tline = fgetl(fileID);
