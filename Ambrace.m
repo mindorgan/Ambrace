@@ -10,9 +10,9 @@ function varargout = Ambrace(varargin)
 %   1. Nine neucleotides including the amber codon: NNNTAGNNN
 %       Ref:    Mao et al. - 2004, Miller - 1983, Bossi - 1983, Pedersen, Curran - 1991 
 %   2. The last amino acid before the amber codon
-%       Ref:    Zhang, Rydén-Aulin, Isaksson - 1996, Mottagui-Tabar, Isaksson - 1997
+%       Ref:    Zhang, Ryd?-Aulin, Isaksson - 1996, Mottagui-Tabar, Isaksson - 1997
 %   3. The second last amino acid before the amber codon
-%       Ref:    Mottagui-tabar, Björnsson, Isaksson - 1994 , Björnsson,
+%       Ref:    Mottagui-tabar, Bj?nsson, Isaksson - 1994 , Bj?nsson,
 %       Mottagui-Tabar, Isaksson - 1996, Mottagui-Tabar, Isaksson - 1997
 %
 % See also: AA2_score, AA1_score, Mao_score
@@ -94,7 +94,7 @@ end
 % Check the options
 skip=get(handles.lastAAcheckbox,'value')+2*get(handles.slastAAcheckbox,'value');
 % this is our protein sequence
-AA_input = get(handles.edit1,'String');
+AA_input = upper(get(handles.edit1,'String'));
 if numel(AA_input)<4-handles.method
     h=errordlg(['Input at least ' num2str(4-handles.method) ' AAs']);
     return;
@@ -128,7 +128,13 @@ try
     % Now sort the sequences by their scores
     [sortedScores, sortIndex]=sort(scores,'descend');
     
-    cd(fullfile(codePath,'Output'));
+    outDir=fullfile(codePath,'Output');
+    try
+        mkdir(outDir);
+    catch e
+        ;
+    end
+    cd(outDir);
     
     today_str=strcat(datestr(clock,'yyyy-mm-dd-HHMM'),'m',datestr(clock,'ss'),'s');
     result_file=['Ambrace_' today_str '.txt'];
@@ -227,11 +233,7 @@ function codon_select_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 handles=guidata(hObject);
-curPath=pwd;
-[codePath,name,ext] = fileparts(mfilename('fullpath'));
-cd(fullfile(codePath,'Codon'));
-
-[codon_file, foo, opened] = uigetfile('*.txt');
+[codon_file, fooPath, opened] = uigetfile('*.txt');
 
 if opened==0
     h=errordlg('You must select a condon table');
@@ -280,7 +282,6 @@ while ischar(tline)
 end
 
 fclose(fileID);
-cd(curPath);
 guidata(hObject,handles);
 
 % --- Executes during object creation, after setting all properties.
