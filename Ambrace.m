@@ -104,7 +104,11 @@ end
 try
     curPath=pwd;
     [codePath,name,ext] = fileparts(mfilename('fullpath'));
-    addpath(fullfile(codePath,'Scores')); % add scoring fuctions path
+    if exist(fullfile(codePath,'Scores'),'dir')==0
+        fprintf(2,'Unable to find Scoring functions location: %s',fullfile(codePath,'Scores'));
+    else
+        addpath(fullfile(codePath,'Scores')); % add scoring fuctions path
+    end
     
     sequences=cell(0,1);
     scores=zeros(0,1);
