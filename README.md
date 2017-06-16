@@ -11,3 +11,5 @@ Three score will be multiplied
 Amino acid 1 score is normalized by its nucleic acid sequence. And Amino acid 2 score is normalized by both of the nucleic acid sequence & amino acid 1 seqeunce.
 
 For details see the papers in the reference directory.
+
+Standalone ver. for windows 7 x64: https://drive.google.com/file/d/0B2r_ob2YOmqaSlhydUZzUkk1cWM/view?usp=sharing
